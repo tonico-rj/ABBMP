@@ -1,0 +1,13 @@
+{
+    "name": "Praca",
+    "alias": "praca",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Praca\\Providers\\PracaServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

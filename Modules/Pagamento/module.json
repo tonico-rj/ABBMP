@@ -1,0 +1,13 @@
+{
+    "name": "Pagamento",
+    "alias": "pagamento",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Pagamento\\Providers\\PagamentoServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

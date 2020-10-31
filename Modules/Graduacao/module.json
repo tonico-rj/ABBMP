@@ -1,0 +1,13 @@
+{
+    "name": "Graduacao",
+    "alias": "graduacao",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Graduacao\\Providers\\GraduacaoServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

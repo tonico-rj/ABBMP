@@ -1,0 +1,13 @@
+{
+    "name": "Comprovante",
+    "alias": "comprovante",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Comprovante\\Providers\\ComprovanteServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

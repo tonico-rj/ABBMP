@@ -1,0 +1,12 @@
+{
+    "Praca": true,
+    "Situacao": true,
+    "Forca": true,
+    "Graduacao": true,
+    "Especialidade": true,
+    "Atividade": true,
+    "PracaAtividades": true,
+    "Pagamento": true,
+    "Comprovante": true,
+    "TipoMembro": true
+}

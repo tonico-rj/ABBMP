@@ -1,0 +1,13 @@
+{
+    "name": "PracaAtividades",
+    "alias": "pracaatividades",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\PracaAtividades\\Providers\\PracaAtividadesServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

@@ -1,0 +1,13 @@
+{
+    "name": "Situacao",
+    "alias": "situacao",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Situacao\\Providers\\SituacaoServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

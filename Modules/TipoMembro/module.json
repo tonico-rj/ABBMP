@@ -1,0 +1,13 @@
+{
+    "name": "TipoMembro",
+    "alias": "tipomembro",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\TipoMembro\\Providers\\TipoMembroServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

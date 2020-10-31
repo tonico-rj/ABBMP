@@ -1,0 +1,13 @@
+{
+    "name": "Forca",
+    "alias": "forca",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Forca\\Providers\\ForcaServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
