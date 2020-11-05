@@ -11,6 +11,5 @@
 |
 */
 
-Route::prefix('forca')->group(function() {
-    Route::get('/', 'ForcaController@index');
-});
+Route::resource('forca', 'ForcaController');
+

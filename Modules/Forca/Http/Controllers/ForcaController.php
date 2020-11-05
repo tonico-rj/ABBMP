@@ -5,6 +5,7 @@ namespace Modules\Forca\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Forca\Entities\Forca;
 
 class ForcaController extends Controller
 {
@@ -14,7 +15,12 @@ class ForcaController extends Controller
      */
     public function index()
     {
-        return view('forca::index');
+        // carrega os registros
+        $registros = Forca::orderBy('forca')->get();
+
+        return view('forca::index')
+            ->with('registros', $registros)
+            ;
     }
 
     /**
@@ -33,7 +39,13 @@ class ForcaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $reg = new Forca();
+        $reg->create($input);
+
+        \Session::flash('message', trans( 'mensagens.conf_inc'));
+        $url = $request->get('redirect_to', asset('forca'));
+        return redirect()->to($url);
     }
 
     /**
@@ -43,7 +55,10 @@ class ForcaController extends Controller
      */
     public function show($id)
     {
-        return view('forca::show');
+        $reg = Forca::find($id);
+        return view('forca::show')
+            ->with('reg', $reg)
+            ;
     }
 
     /**
@@ -53,7 +68,10 @@ class ForcaController extends Controller
      */
     public function edit($id)
     {
-        return view('forca::edit');
+        $reg = Forca::find($id);
+        return view('forca::edit')
+            ->with('reg', $reg)
+            ;
     }
 
     /**
@@ -64,7 +82,14 @@ class ForcaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $reg = Forca::find($id);
+
+        $reg->update($input);
+
+        \Session::flash('message', trans( 'mensagens.conf_alt'));
+        $url = $request->get('redirect_to', asset('forca'));
+        return redirect()->to($url);
     }
 
     /**
@@ -74,6 +99,10 @@ class ForcaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $registro = Forca::find($id);
+        $registro->delete();
+
+        \Session::flash('message', trans( 'mensagens.conf_exc'));
+        return redirect()->to(asset('forca'));
     }
 }

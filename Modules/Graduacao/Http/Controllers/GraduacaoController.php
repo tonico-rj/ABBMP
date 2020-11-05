@@ -5,6 +5,7 @@ namespace Modules\Graduacao\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Graduacao\Entities\Graduacao;
 
 class GraduacaoController extends Controller
 {
@@ -14,7 +15,12 @@ class GraduacaoController extends Controller
      */
     public function index()
     {
-        return view('graduacao::index');
+        // carrega os registros
+        $registros = Graduacao::orderBy('graduacao')->get();
+
+        return view('graduacao::index')
+            ->with('registros', $registros)
+            ;
     }
 
     /**
@@ -33,7 +39,13 @@ class GraduacaoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $reg = new Graduacao();
+        $reg->create($input);
+
+        \Session::flash('message', trans( 'mensagens.conf_inc'));
+        $url = $request->get('redirect_to', asset('graduacao'));
+        return redirect()->to($url);
     }
 
     /**
@@ -43,7 +55,10 @@ class GraduacaoController extends Controller
      */
     public function show($id)
     {
-        return view('graduacao::show');
+        $reg = Graduacao::find($id);
+        return view('graduacao::show')
+            ->with('reg', $reg)
+            ;
     }
 
     /**
@@ -53,7 +68,10 @@ class GraduacaoController extends Controller
      */
     public function edit($id)
     {
-        return view('graduacao::edit');
+        $reg = Graduacao::find($id);
+        return view('graduacao::edit')
+            ->with('reg', $reg)
+            ;
     }
 
     /**
@@ -64,7 +82,14 @@ class GraduacaoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $reg = Graduacao::find($id);
+
+        $reg->update($input);
+
+        \Session::flash('message', trans( 'mensagens.conf_alt'));
+        $url = $request->get('redirect_to', asset('graduacao'));
+        return redirect()->to($url);
     }
 
     /**
@@ -74,6 +99,10 @@ class GraduacaoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $registro = Graduacao::find($id);
+        $registro->delete();
+
+        \Session::flash('message', trans( 'mensagens.conf_exc'));
+        return redirect()->to(asset('graduacao'));
     }
 }

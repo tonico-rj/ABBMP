@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('especialidade')->group(function() {
-    Route::get('/', 'EspecialidadeController@index');
-});
+
+Route::resource('especialidade', 'EspecialidadeController');
+

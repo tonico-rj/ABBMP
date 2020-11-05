@@ -33,6 +33,9 @@ return [
     'especialidade' => 'Especialidade',
     'exclusao' => 'Exclusão',
 
+    'exc_especialidade' => 'Confirma exclusão da especialidade ',
+    'exc_forca' => 'Confirma exclusão da força ',
+
     'forca' => 'Força',
 
     'graduacao' => 'Graduação',

@@ -281,7 +281,7 @@ return [
                 ],
                 [
                     'text' => 'Graduação',
-                    'url'  => 'gaduacao',
+                    'url'  => 'graduacao',
                 ],
                 [
                     'text' => 'Situação',
@@ -413,6 +413,16 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
+                ],
+            ],
+        ],
+        'Bootboxjs' => [
+            'active' => false,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'vendor/bootboxjs/bootbox.min.js',
                 ],
             ],
         ],

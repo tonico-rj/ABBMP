@@ -5,6 +5,7 @@ namespace Modules\Especialidade\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Especialidade\Entities\Especialidade;
 
 class EspecialidadeController extends Controller
 {
@@ -14,7 +15,12 @@ class EspecialidadeController extends Controller
      */
     public function index()
     {
-        return view('especialidade::index');
+        // carrega os registros
+        $registros = Especialidade::orderBy('especialidade')->get();
+
+        return view('especialidade::index')
+            ->with('registros', $registros)
+            ;
     }
 
     /**
@@ -33,7 +39,13 @@ class EspecialidadeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $reg = new Especialidade();
+        $reg->create($input);
+
+        \Session::flash('message', trans( 'mensagens.conf_inc'));
+        $url = $request->get('redirect_to', asset('especialidade'));
+        return redirect()->to($url);
     }
 
     /**
@@ -43,7 +55,10 @@ class EspecialidadeController extends Controller
      */
     public function show($id)
     {
-        return view('especialidade::show');
+        $reg = Especialidade::find($id);
+        return view('especialidade::show')
+            ->with('reg', $reg)
+            ;
     }
 
     /**
@@ -53,7 +68,10 @@ class EspecialidadeController extends Controller
      */
     public function edit($id)
     {
-        return view('especialidade::edit');
+        $reg = Especialidade::find($id);
+        return view('especialidade::edit')
+            ->with('reg', $reg)
+            ;
     }
 
     /**
@@ -64,7 +82,14 @@ class EspecialidadeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $reg = Especialidade::find($id);
+
+        $reg->update($input);
+
+        \Session::flash('message', trans( 'mensagens.conf_alt'));
+        $url = $request->get('redirect_to', asset('especialidade'));
+        return redirect()->to($url);
     }
 
     /**
@@ -74,6 +99,10 @@ class EspecialidadeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $registro = Especialidade::find($id);
+        $registro->delete();
+
+        \Session::flash('message', trans( 'mensagens.conf_exc'));
+        return redirect()->to(asset('especialidade'));
     }
 }

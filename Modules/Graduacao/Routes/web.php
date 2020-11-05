@@ -11,6 +11,4 @@
 |
 */
 
-Route::prefix('graduacao')->group(function() {
-    Route::get('/', 'GraduacaoController@index');
-});
+Route::resource('graduacao', 'GraduacaoController');
